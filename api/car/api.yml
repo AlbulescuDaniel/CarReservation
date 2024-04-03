@@ -1,0 +1,85 @@
+car:
+  get:
+    summary:  Return all cars
+    operationId: getCars
+    responses:
+      200:
+        description: Car list retrieved successfully
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "model.yml#/Car"
+      default:
+        $ref: "../model.yml#/components/responses/default"
+
+  post:
+    summary: Create a car
+    operationId: createCar
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "model.yml#/Car"
+    responses:
+      201:
+        description: Car created successfully
+        content:
+          application/json:
+            schema:
+              $ref: "model.yml#/Car"
+      400:
+        $ref: "../model.yml#/components/responses/badRequest"
+      default:
+        $ref: "../model.yml#/components/responses/default"
+
+carById:
+  put:
+    summary: Update a car
+    operationId: updateCar
+    parameters:
+      - name: carId
+        in: path
+        required: true
+        description: Car id
+        schema:
+          type: integer
+          format: int64
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "model.yml#/Car"
+    responses:
+      200:
+        description: Car updated successfully
+        content:
+          application/json:
+            schema:
+              $ref: "model.yml#/Car"
+      400:
+        $ref: "../model.yml#/components/responses/badRequest"
+      default:
+        $ref: "../model.yml#/components/responses/default"
+
+  delete:
+    summary: Delete a car
+    operationId: deleteCar
+    parameters:
+      - name: "carId"
+        in: path
+        required: true
+        description: Car id
+        schema:
+          type: integer
+          format: int64
+    responses:
+      200:
+        description: Car deleted successfully
+      400:
+        $ref: "../model.yml#/components/responses/notFound"
+      default:
+        $ref: "../model.yml#/components/responses/default"

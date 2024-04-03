@@ -1,0 +1,17 @@
+Car:
+  type: object
+  required:
+    - identifier
+    - make
+    - model
+  properties:
+    id:
+      type: integer
+      format: int64
+    identifier:
+      type: string
+      pattern: 'C\d+'
+    make:
+      type: string
+    model:
+      type: string

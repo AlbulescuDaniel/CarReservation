@@ -1,0 +1,35 @@
+reservation:
+  get:
+    summary:  Return all reservations
+    operationId: getCarReservations
+    responses:
+      200:
+        description: Car reservation list retrieved successfully
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "model.yml#/CarReservation"
+      default:
+        $ref: "../model.yml#/components/responses/default"
+  post:
+    summary: Create a reservation for a car
+    operationId: createCarReservation
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "model.yml#/CarReservation"
+    responses:
+      201:
+        description: Car reservation created successfully
+        content:
+          application/json:
+            schema:
+              $ref: "model.yml#/CarReservation"
+      400:
+        $ref: "../model.yml#/components/responses/badRequest"
+      default:
+        $ref: "../model.yml#/components/responses/default"

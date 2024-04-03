@@ -1,0 +1,21 @@
+logging.level.org:
+    springframework: INFO
+
+spring:
+    datasource:
+        url: jdbc:postgresql://postgres:5432/local
+        username: local-user
+        password: secret
+        driver-class: org.postgresql.Driver
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: update
+
+# logs the SQL statements
+log4j.logger.org.hibernate.SQL: debug
+
+  # Logs the JDBC parameters passed to a query
+log4j.logger.org.hibernate.type: trace

@@ -1,0 +1,13 @@
+CarReservation:
+  type: object
+  required:
+    - reservationTime
+    - durationHours
+  properties:
+    reservationTime:
+      type: string
+      format: Instant
+    durationHours:
+      type: integer
+    car:
+      $ref: "../car/model.yml#/Car"
